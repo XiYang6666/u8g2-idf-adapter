@@ -9,27 +9,8 @@
 
 static const char *TAG = "u8g2_idf_adapter";
 
-// 初始化配置
-
-void u8g2_idf_adapter_config_init_spi(u8g2_idf_adapter_config_t *config) {
-    const u8g2_idf_adapter_config_t inited_config = {
-        .bus = {.spi = U8G2_IDF_ADAPTER_DEFAULT_SPI_CONFIG,},
-        .gpio = U8G2_IDF_ADAPTER_DEFAULT_GPIO_CONFIG,
-        .frequency = 10000,
-    };
-    *config = inited_config;
-}
-
-void u8g2_idf_adapter_config_init_i2c(u8g2_idf_adapter_config_t *config) {
-    const u8g2_idf_adapter_config_t inited_config = {
-        .bus = {.i2c = U8G2_IDF_ADAPTER_DEFAULT_I2C_CONFIG,},
-        .gpio = U8G2_IDF_ADAPTER_DEFAULT_GPIO_CONFIG,
-        .frequency = 10000,
-    };
-    *config = inited_config;
-}
-
 // 初始化上下文
+
 static esp_err_t init_spi_device(
     spi_device_handle_t *device_handle,
     const u8g2_idf_adapter_config_t *config
@@ -240,6 +221,8 @@ static u8g2_idf_adapter_t *get_context(u8x8_t *u8x8) {
     return (u8g2_idf_adapter_t *) u8x8;
 #endif
 }
+
+// u8g2 回调
 
 uint8_t u8g2_idf_adapter_byte_cb(u8x8_t *u8x8, const uint8_t msg, const uint8_t arg_int, void *arg_ptr) {
     const u8g2_idf_adapter_t *context = get_context(u8x8);

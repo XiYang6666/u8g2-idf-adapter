@@ -48,7 +48,6 @@
 
 #ifdef __cplusplus
 extern "C" {
-
 #endif
 
 
@@ -92,6 +91,7 @@ u8g2_idf_adapter_config_t;
 
 
 // 上下文
+
 typedef struct {
     u8g2_t u8g2;
     u8g2_idf_adapter_config_t config;
@@ -103,11 +103,6 @@ typedef struct {
     } dev_handler;
 } u8g2_idf_adapter_t;
 
-// 初始化配置
-
-void u8g2_idf_adapter_config_init_spi(u8g2_idf_adapter_config_t *config);
-
-void u8g2_idf_adapter_config_init_i2c(u8g2_idf_adapter_config_t *config);
 
 // 初始化上下文
 
