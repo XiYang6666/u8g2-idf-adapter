@@ -264,10 +264,10 @@ uint8_t u8g2_idf_adapter_gpio_and_delay_cb(u8x8_t *u8x8, const uint8_t msg, cons
             // 初始化 GPIO
             uint64_t bitmask = 0;
             if (context->bus_type == U8G2_IDF_ADAPTER_SPI) {
-                if (context->config.bus.spi.cs != GPIO_NUM_NC) bitmask |= BIT(context->config.bus.spi.cs);
+                if (context->config.bus.spi.cs != GPIO_NUM_NC) bitmask |= BIT64(context->config.bus.spi.cs);
             }
-            if (context->config.gpio.dc != GPIO_NUM_NC)bitmask |= BIT(context->config.gpio.dc);
-            if (context->config.gpio.reset != GPIO_NUM_NC)bitmask |= BIT(context->config.gpio.reset);
+            if (context->config.gpio.dc != GPIO_NUM_NC)bitmask |= BIT64(context->config.gpio.dc);
+            if (context->config.gpio.reset != GPIO_NUM_NC)bitmask |= BIT64(context->config.gpio.reset);
             if (bitmask == 0) break;
             gpio_config_t config;
             config.pin_bit_mask = bitmask;

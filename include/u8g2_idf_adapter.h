@@ -8,27 +8,27 @@
 
 #include "u8g2.h"
 
-#define U8G2_IDF_ADAPTER_DEFAULT_GPIO_CONFIG                \
-    {                                                       \
-        .reset = GPIO_NUM_NC,                               \
-        .dc = GPIO_NUM_NC,                                  \
+#define U8G2_IDF_ADAPTER_DEFAULT_GPIO_CONFIG                  \
+    {                                                         \
+        .reset = GPIO_NUM_NC,                                 \
+        .dc = GPIO_NUM_NC,                                    \
     }
 
-#define U8G2_IDF_ADAPTER_DEFAULT_SPI_CONFIG                  \
-    {                                                        \
-        .host = SPI2_HOST,                                   \
-        .clk = GPIO_NUM_NC,                                  \
-        .mosi = GPIO_NUM_NC,                                 \
-        .cs = GPIO_NUM_NC,                                   \
+#define U8G2_IDF_ADAPTER_DEFAULT_SPI_CONFIG                   \
+    {                                                         \
+        .host = SPI2_HOST,                                    \
+        .clk = GPIO_NUM_NC,                                   \
+        .mosi = GPIO_NUM_NC,                                  \
+        .cs = GPIO_NUM_NC,                                    \
     }
 
-#define U8G2_IDF_ADAPTER_DEFAULT_I2C_CONFIG                  \
-    {                                                        \
-        .port = I2C_NUM_0,                                   \
-        .addr_mode = U8G2_IDF_ADAPTER_I2C_ADDR_BIT_LEN_7,    \
-        .sda = GPIO_NUM_NC,                                  \
-        .scl = GPIO_NUM_NC,                                  \
-        .address = 0,                                        \
+#define U8G2_IDF_ADAPTER_DEFAULT_I2C_CONFIG                   \
+    {                                                         \
+        .port = I2C_NUM_0,                                    \
+        .addr_mode = U8G2_IDF_ADAPTER_I2C_ADDR_BIT_LEN_7,     \
+        .sda = GPIO_NUM_NC,                                   \
+        .scl = GPIO_NUM_NC,                                   \
+        .address = 0,                                         \
     }
 
 #define U8G2_IDF_ADAPTER_CONFIG_DEFAULT_SPI                   \
