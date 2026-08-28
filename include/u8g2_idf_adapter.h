@@ -17,6 +17,7 @@
 #define U8G2_IDF_ADAPTER_DEFAULT_SPI_CONFIG                   \
     {                                                         \
         .host = SPI2_HOST,                                    \
+        .mode = 0,                                            \
         .clk = GPIO_NUM_NC,                                   \
         .mosi = GPIO_NUM_NC,                                  \
         .cs = GPIO_NUM_NC,                                    \
@@ -36,6 +37,8 @@
         .bus = {.spi = U8G2_IDF_ADAPTER_DEFAULT_SPI_CONFIG,}, \
         .gpio = U8G2_IDF_ADAPTER_DEFAULT_GPIO_CONFIG,         \
         .frequency = 10000,                                   \
+        .tx_buf = nullptr,                                    \
+        .tx_buf_size = 0,                                     \
     }
 
 #define U8G2_IDF_ADAPTER_CONFIG_DEFAULT_I2C                   \
@@ -43,11 +46,15 @@
         .bus = {.i2c = U8G2_IDF_ADAPTER_DEFAULT_I2C_CONFIG,}, \
         .gpio = U8G2_IDF_ADAPTER_DEFAULT_GPIO_CONFIG,         \
         .frequency = 10000,                                   \
+        .tx_buf = nullptr,                                    \
+        .tx_buf_size = 0,                                     \
     }
 
 
 #ifdef __cplusplus
 extern "C" {
+
+
 #endif
 
 
@@ -66,6 +73,7 @@ typedef struct {
     union {
         struct {
             spi_host_device_t host;
+            int8_t mode;
             gpio_num_t clk;
             gpio_num_t mosi;
             gpio_num_t cs;
@@ -86,6 +94,9 @@ typedef struct {
     } gpio;
 
     int frequency;
+
+    uint8_t *tx_buf;
+    size_t tx_buf_size;
 }
 u8g2_idf_adapter_config_t;
 
@@ -96,6 +107,7 @@ typedef struct {
     u8g2_t u8g2;
     u8g2_idf_adapter_config_t config;
     u8g2_idf_adapter_bus_type bus_type;
+    size_t tx_buf_used;
 
     union {
         spi_device_handle_t spi;
@@ -123,6 +135,8 @@ esp_err_t u8g2_idf_adapter_init_by_i2c_device(
     const u8g2_idf_adapter_config_t *config,
     i2c_master_dev_handle_t device
 );
+
+// 销毁上下文
 
 // u8g2 回调
 
