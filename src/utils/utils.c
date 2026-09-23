@@ -25,12 +25,13 @@ esp_err_t send_raw(const u8g2_idf_adapter_t *context, const void *data, const si
         return i2c_master_transmit(context->dev_handler.i2c, data, len, -1);
     }
     ESP_LOGE(TAG, "Unknown Bus Type: %d", context->bus_type);
-    abort();
+    return ESP_ERR_INVALID_STATE;
 }
 
 esp_err_t flush_tx_buffer(u8g2_idf_adapter_t *context) {
-    if (context->config.tx_buf == nullptr || context->tx_buf_used == 0)return ESP_OK;
+    if (context->config.tx_buf == nullptr || context->tx_buf_used == 0) return ESP_OK;
     const esp_err_t err = send_raw(context, context->config.tx_buf, context->tx_buf_used);
+    if (err != ESP_OK) return err;
     context->tx_buf_used = 0;
-    return err;
+    return ESP_OK;
 }
