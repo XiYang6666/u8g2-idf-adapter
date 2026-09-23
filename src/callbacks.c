@@ -9,6 +9,7 @@
 #include "./utils/utils.h"
 
 // u8g2 回调
+// ReSharper disable once CppParameterMayBeConstPtrOrRef
 uint8_t u8g2_idf_adapter_byte_cb(u8x8_t *u8x8, const uint8_t msg, const uint8_t arg_int, void *arg_ptr) {
     u8g2_idf_adapter_t *context = get_context(u8x8);
     switch (msg) {
@@ -51,6 +52,7 @@ uint8_t u8g2_idf_adapter_byte_cb(u8x8_t *u8x8, const uint8_t msg, const uint8_t 
     return 0;
 }
 
+// ReSharper disable once CppParameterNeverUsed
 uint8_t u8g2_idf_adapter_gpio_and_delay_cb(u8x8_t *u8x8, const uint8_t msg, const uint8_t arg_int, void *arg_ptr) {
     const u8g2_idf_adapter_t *context = get_context(u8x8);
     switch (msg) {

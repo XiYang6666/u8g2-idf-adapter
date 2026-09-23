@@ -39,7 +39,7 @@ esp_err_t u8g2_idf_adapter_init(
 esp_err_t u8g2_idf_adapter_init_by_spi_device(
     u8g2_idf_adapter_t *self,
     const u8g2_idf_adapter_config_t *config,
-    const spi_device_handle_t device
+    const spi_device_handle_t device // NOLINT(misc-misplaced-const)
 ) {
     if ((config->tx_buf == nullptr) != (config->tx_buf_size == 0)) {
         ESP_LOGE(TAG, "tx_buf and tx_buf_size must both be set, or both left unset");
@@ -55,7 +55,7 @@ esp_err_t u8g2_idf_adapter_init_by_spi_device(
 esp_err_t u8g2_idf_adapter_init_by_i2c_device(
     u8g2_idf_adapter_t *self,
     const u8g2_idf_adapter_config_t *config,
-    const i2c_master_dev_handle_t device
+    const i2c_master_dev_handle_t device // NOLINT(misc-misplaced-const)
 ) {
     if ((config->tx_buf == nullptr) != (config->tx_buf_size == 0)) {
         ESP_LOGE(TAG, "tx_buf and tx_buf_size must both be set, or both left unset");
